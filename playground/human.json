@@ -1,0 +1,13 @@
+{
+  "person1": {
+    "name": "Taro Yamada",
+    "age": 30,
+    "job": "Software Engineer"
+  },
+  "person2": {
+    "name": "Hanako Suzuki",
+    "age": 28,
+    "job": "Data Scientist"
+  }
+}
+
