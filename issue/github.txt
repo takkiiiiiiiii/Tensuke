@@ -1,0 +1,12 @@
+Github(ブラウザ)からGit(ターミナル)にコードをダウンロード
+
+1. Gitにて、cdでTensukeディレクトリに移動
+2. Gitにて、git pull origin main コマンドでダウンロード
+
+
+GitからGithubにコードをアップロード
+1. Gitにて、cdでTensukeディレクトリに移動
+2. Gitにて、git status で何のファイルを変更・生成・削除したか確認
+3. Gitにて、git add ~~~ (~~には変更したファイルを指定) を入力
+4. Gitにて、git commit -m "~~~~~~" で ~~~~~~にはどんなことしたかをコメント
+5. Gitにて、git push -u origin mainでコードをGithubへアップロード
