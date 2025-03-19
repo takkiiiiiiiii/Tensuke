@@ -1,3 +1,4 @@
+# パッケージ(jsonなど)追加するものがあれば、追加してOK！
 import json
 
 
@@ -5,12 +6,11 @@ import json
 # Fukushima weather information (basic): https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json 
 
 
-# Fukushima weather information (detailed): https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json
-# 上記のJsonデータは　https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=070000 で見やすくなっています！
 
 
 #=====================================#
 # 福島県全体の天気情報を戻り値(文字列)とする関数
+# 基本情報のJsonデータ: https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json 
 # Args: Jsonデータ（追加したいものがあれば、追加してOK！）
 # Return: 福島全体の天気データ（文字列）
 #=====================================#
@@ -20,6 +20,8 @@ def basicWeatherInfo(jsonBasicData):
 
 #=====================================#
 # 会津の天気情報を戻り値(文字列)とする関数
+# 詳細情報のJsonデータ：https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json 
+# (上記のJsonデータは　https://www.jma.go.jp/bosai/forecast/#area_type=offices&area_code=070000 で見やすくなっています！)
 # Args: Jsonデータ（追加したいものがあれば、追加してOK！）
 # Return: 会津の天気データ（文字列）
 #=====================================#
