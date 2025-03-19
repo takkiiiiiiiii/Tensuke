@@ -1,13 +1,6 @@
 # パッケージ(jsonなど)追加するものがあれば、追加してOK！
 import json
 
-
-# Using the Japan Meteorological Agency (JMA) Weather API
-# Fukushima weather information (basic): https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json 
-
-
-
-
 #=====================================#
 # 福島県全体の天気情報を戻り値(文字列)とする関数
 # 基本情報のJsonデータ: https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json 
