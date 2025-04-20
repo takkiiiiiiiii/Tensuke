@@ -19,6 +19,14 @@ from linebot.v3.webhooks import (
 )
 
 
+    
+
+import sys, os
+weather_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'weather'))
+sys.path.append(weather_path)
+from unko import detailWeatherInfo, basicWeatherInfo
+
+
 app = Flask(__name__)
 
 handler = WebhookHandler('YOUR_CHANNEL_SECRET')
@@ -67,6 +75,13 @@ def handle_message(event):
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))
+    jsonBasicData = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json"
+    jsonDetailData = "https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json"
+    basicInfo = basicWeatherInfo(jsonBasicData)
+    detailInfo = detailWeatherInfo(jsonDetailData)
+    print(f'基本情報: {basicInfo}')
+    print(f'詳細情報: {detailInfo}')
+    port = int(os.getenv("PORT", 7777))
     app.run(host="0.0.0.0", port=port, debug=False)
+
 
