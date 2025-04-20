@@ -1,9 +1,10 @@
+
+
 import os
 from flask import Flask, abort, request
 from linebot.v3.webhook import (
     WebhookHandler
 )
-
 import uuid
 
 from linebot.v3.exceptions import (
@@ -42,10 +43,8 @@ from unko import detailWeatherInfo, basicWeatherInfo
 
 app = Flask(__name__)
 
-handler = WebhookHandler('0f17045277cb53fda29d6254debd6ba2')
-configuration = Configuration(access_token='KaqoxEaoGKSdDgQP4BbTl9lUTgPTSW6hagMZcYWOjgg5/SaAW+0UAxjjAPgjqDcgMOeE4MaUsaI5vXANAyy98nifd8cokohRxTg/08zpsQKafEV+sqIe1Rn0/UbvZuV02/tWVVgq0BK6G9CGKHu/oAdB04t89/1O/w1cDnyilFU=')
-
-
+handler = WebhookHandler('SECRET')
+configuration = Configuration(access_token='TOKEN')
 
 
 @app.route("/callback", methods=['POST'])
