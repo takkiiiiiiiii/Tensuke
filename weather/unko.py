@@ -15,11 +15,10 @@ def basicWeatherInfo(jsonBasicData):
         data = response.json()                 # 取得したJSON文字列を Python の辞書形式に変換
 
         report_datetime = data.get('reportDatatime', '発表日時不明')
-        headline = data.get('text', 'ヘッドラインなし')
         text = data.get('text', '本文なし')
 
-        result = f"【発表日時】{report_datetime}\n【ヘッドライン】{headline}\n【本文】\n{text}"
-        return 
+        result = f"【発表日時】{report_datetime}\n【本文】\n{text}"
+        return result 
     except requests.RequestException as e:   # エラーを e という名前で受け取る
         return f"基本情報取得中にエラー: {e}"  # 謎の文字列説明 → https://note.nkmk.me/python-f-strings/
 
