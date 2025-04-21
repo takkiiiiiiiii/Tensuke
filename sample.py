@@ -43,15 +43,10 @@ from unko import detailWeatherInfo, basicWeatherInfo
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
 handler = WebhookHandler('84d19c2e96af317826c15fabd7126668')
 configuration = Configuration(access_token='vduw4FGx+X/zM4GlIdTWc8JN3CheLO6qhMm+b8M3KrQWAKrVe2ixgqeNzNzF72fBm8vX8r7ZKGyW5ci9VUMd0yhxQldSW8PXdo+KVscE+95d4pQe2KAB3FPH3ypqTu1bPjOn/yS2us1JznFlMDvAAQdB04t89/1O/w1cDnyilFU=')
 
 
-=======
-handler = WebhookHandler('SECRET')
-configuration = Configuration(access_token='TOKEN')
->>>>>>> 4f62a50f1fef3ae7d9896b9fd8d2a0dec1aa6c79
 
 
 @app.route("/callback", methods=['POST'])
