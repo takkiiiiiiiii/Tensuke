@@ -42,8 +42,8 @@ from unko import detailWeatherInfo, basicWeatherInfo
 
 app = Flask(__name__)
 
-handler = WebhookHandler('0f17045277cb53fda29d6254debd6ba2')
-configuration = Configuration(access_token='KaqoxEaoGKSdDgQP4BbTl9lUTgPTSW6hagMZcYWOjgg5/SaAW+0UAxjjAPgjqDcgMOeE4MaUsaI5vXANAyy98nifd8cokohRxTg/08zpsQKafEV+sqIe1Rn0/UbvZuV02/tWVVgq0BK6G9CGKHu/oAdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('84d19c2e96af317826c15fabd7126668')
+configuration = Configuration(access_token='vduw4FGx+X/zM4GlIdTWc8JN3CheLO6qhMm+b8M3KrQWAKrVe2ixgqeNzNzF72fBm8vX8r7ZKGyW5ci9VUMd0yhxQldSW8PXdo+KVscE+95d4pQe2KAB3FPH3ypqTu1bPjOn/yS2us1JznFlMDvAAQdB04t89/1O/w1cDnyilFU=')
 
 
 
@@ -72,14 +72,10 @@ def handle_message(event):
     with ApiClient(configuration) as api_client:
         jsonBasicData = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json"
         basicInfo = basicWeatherInfo(jsonBasicData)
-        if event.message.text == 'グー':
+        if event.message.text == '天気':
             msg = basicInfo
-        elif event.message.text == 'チョキ':
-            msg = 'グー'
-        elif event.message.text == 'パー':
-            msg = 'チョキ'
         else:
-            msg = 'ごめんね。\nまだ他のメッセージには対応してないよ'
+            msg = '「天気」と入力してください。'
 
         line_bot_api = MessagingApi(api_client)
         line_bot_api.reply_message_with_http_info(
