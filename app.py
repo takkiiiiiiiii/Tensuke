@@ -1,6 +1,3 @@
-
-
-import os
 from flask import Flask, abort, request
 from linebot.v3.webhook import (
     WebhookHandler
@@ -43,10 +40,8 @@ from unko import detailWeatherInfo, basicWeatherInfo
 
 app = Flask(__name__)
 
-handler = WebhookHandler('84d19c2e96af317826c15fabd7126668')
-configuration = Configuration(access_token='vduw4FGx+X/zM4GlIdTWc8JN3CheLO6qhMm+b8M3KrQWAKrVe2ixgqeNzNzF72fBm8vX8r7ZKGyW5ci9VUMd0yhxQldSW8PXdo+KVscE+95d4pQe2KAB3FPH3ypqTu1bPjOn/yS2us1JznFlMDvAAQdB04t89/1O/w1cDnyilFU=')
-
-
+handler = WebhookHandler('CHANNEL_SECRET')
+configuration = Configuration(access_token='CHANNEL_TOEKN')
 
 
 @app.route("/callback", methods=['POST'])
@@ -71,10 +66,10 @@ def callback():
 @handler.add(MessageEvent, message=TextMessageContent)
 def handle_message(event):
     with ApiClient(configuration) as api_client:
-        jsonBasicData = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json"
-        basicInfo = basicWeatherInfo(jsonBasicData)
+        jsonDetailData = "https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json"
+        detailInfo = detailWeatherInfo(jsonDetailData)
         if event.message.text == '天気':
-            msg = basicInfo
+            msg = detailInfo
         else:
             msg = '「天気」と入力してください。'
 
@@ -108,11 +103,5 @@ def push_message():
 
 
 if __name__ == "__main__":
-    jsonBasicData = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json"
-    jsonDetailData = "https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json"
-    basicInfo = basicWeatherInfo(jsonBasicData)
-    detailInfo = detailWeatherInfo(jsonDetailData)
-    print(f'基本情報: {basicInfo}')
-    print(f'詳細情報: {detailInfo}')
     port = int(os.getenv("PORT", 7777))
-    app.run(host="0.0.0.0", port=port, debug=False)
+    app.run(port=port, debug=False)
