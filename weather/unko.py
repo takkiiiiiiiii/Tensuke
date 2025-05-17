@@ -1,5 +1,6 @@
 import json
 import requests
+from datetime import datetime
 
 
 def basicWeatherInfo(jsonBasicData):
@@ -8,10 +9,11 @@ def basicWeatherInfo(jsonBasicData):
         response.raise_for_status()           
         data = response.json()           
 
-        report_datetime = data.get('reportDatatime', '発表日時不明')
+        report_datetime = data.get('reportDatetime', '発表日時不明')
+        dt = datetime.fromisoformat(report_datetime)
+        formatted = dt.strftime('%Y-%m-%d %H:%M')
         text = data.get('text', '本文なし')
-
-        result = f"【発表日時】{report_datetime}\n【本文】\n{text}"
+        result = f"【発表日時】{formatted}\n【情報】\n{text}"
         return result 
     except requests.RequestException as e:  
         return f"基本情報取得中にエラー: {e}"
@@ -39,3 +41,12 @@ def detailWeatherInfo(jsonDetailData):
     except requests.RequestException as e:
 
         return f"詳細情報取得中にエラー: {e}"
+
+
+def main():
+    jsonBasicData = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json"
+    result = basicWeatherInfo(jsonBasicData)
+    print(result)
+
+if __name__ == '__main__':
+    main()
