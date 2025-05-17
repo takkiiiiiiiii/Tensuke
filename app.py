@@ -40,8 +40,11 @@ from unko import detailWeatherInfo, basicWeatherInfo
 
 app = Flask(__name__)
 
-handler = WebhookHandler('CHANNEL_SECRET')
-configuration = Configuration(access_token='CHANNEL_TOEKN')
+channel_access_token = os.getenv('TENSUKE_CHANNEL_TOKEN')
+channel_secret = os.getenv('TENSUKE_CHANNEL_SECRET')
+
+handler = WebhookHandler(channel_secret=channel_secret)
+configuration = Configuration(access_token=channel_access_token)
 
 
 @app.route("/callback", methods=['POST'])
@@ -103,5 +106,5 @@ def push_message():
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 7777))
+    port = int(os.getenv("TENSUKE_PORT", 8888))
     app.run(port=port, debug=False)
